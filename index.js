@@ -33,7 +33,7 @@ if (process.env.FACEBOOK_APP_ID && process.env.FB_ACCOUNTKIT_SECRET) {
   }
 }
 
-if (process.env.FIREBASE_API_KEY) {
+if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY && process.env.FIREBASE_DATABASE_URL) {
   auth.firebase = firebaseAuthAdapter;
 }
 
