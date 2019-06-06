@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 1337
 
-CMD ["node", "index.js"]
+CMD ["node", "--experimental-modules", "index.js"]
