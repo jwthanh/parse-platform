@@ -3,10 +3,10 @@
  * @author: Thanh Vu <jwtrs512@gmail.com>
  */
 
-import http from 'http';
-import express from 'express';
-import { ParseServer } from 'parse-server';
-import firebaseAuthAdapter from 'parse-server-firebase-auth-adapter';
+const http = require('http');
+const express = require('express');
+const ParseServer = require('parse-server').ParseServer;
+const firebaseAuthAdapter = require('parse-server-firebase-auth-adapter');
 
 const app = express();
 
