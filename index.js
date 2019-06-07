@@ -6,7 +6,7 @@
 const http = require('http');
 const express = require('express');
 const ParseServer = require('parse-server').ParseServer;
-const firebaseAuthAdapter = require('parse-server-firebase-auth');
+const firebaseAuthAdapter = require('parse-server-firebase-auth-adapter');
 const path = require('path');
 
 global.FirebaseAdmin = require('firebase-admin');
