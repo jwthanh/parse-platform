@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "dependencies": {
     "express": "^4.17.1",
+    "firebase-admin": "^8.0.0",
     "parse-server": "latest",
     "parse-server-firebase-auth-adapter": "^0.0.4"
   },
