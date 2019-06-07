@@ -6,8 +6,10 @@
 const http = require('http');
 const express = require('express');
 const ParseServer = require('parse-server').ParseServer;
-const firebaseAuthAdapter = require('parse-server-firebase-auth-adapter');
+const firebaseAuthAdapter = require('parse-server-firebase-auth');
 const path = require('path');
+
+global.FirebaseAdmin = require('firebase-admin');
 
 const app = express();
 
@@ -35,6 +37,10 @@ if (process.env.FACEBOOK_APP_ID && process.env.FB_ACCOUNTKIT_SECRET) {
 }
 
 if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY && process.env.FIREBASE_DATABASE_URL) {
+  FirebaseAdmin.initializeApp({
+    credential: FirebaseAdmin.credential.cert(require(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)),
+    databaseURL: process.env.FIREBASE_DATABASE_URL,
+  });
   auth.firebase = firebaseAuthAdapter;
 }
 

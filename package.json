@@ -6,7 +6,7 @@
     "express": "^4.17.1",
     "firebase-admin": "^8.0.0",
     "parse-server": "latest",
-    "parse-server-firebase-auth-adapter": "^0.0.4"
+    "parse-server-firebase-auth": "jwthanh/parse-server-firebase-auth#master"
   },
   "devDependencies": {}
 }
