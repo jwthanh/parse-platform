@@ -25,6 +25,17 @@ let apiConfig = {
   appId: process.env.APP_ID || 'YOUR_KEY',
   masterKey: process.env.MASTER_KEY || 'YOUR_KEY',
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',
+  push: {
+    android: {
+      apiKey: process.env.ANDROID_PUSH_NOTIFICATION_API_KEY
+    },
+    ios: {
+      pfx: process.env.IOS_PUSH_NOTIFICATION_CERT,
+      passphrase: process.env.IOS_PUSH_NOTIFICATION_CERT_PASSWORD || '', // optional password to your p12/PFX
+      bundleId: process.env.IOS_BUNDLE_IDENTIFIER || '',
+      production: process.env.IOS_PUSH_NOTIFICATION_PROD || false,
+    }
+  }
 };
 
 const auth = {};
