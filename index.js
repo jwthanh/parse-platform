@@ -32,7 +32,7 @@ let apiConfig = {
     ios: {
       pfx: process.env.IOS_PUSH_NOTIFICATION_CERT,
       passphrase: process.env.IOS_PUSH_NOTIFICATION_CERT_PASSWORD || '', // optional password to your p12/PFX
-      bundleId: process.env.IOS_BUNDLE_IDENTIFIER || '',
+      topic: process.env.IOS_BUNDLE_IDENTIFIER || '',
       production: process.env.IOS_PUSH_NOTIFICATION_PROD === 'true' || false,
     }
   }
