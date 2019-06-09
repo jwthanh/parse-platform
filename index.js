@@ -6,6 +6,7 @@
 const http = require('http');
 const express = require('express');
 const ParseServer = require('parse-server').ParseServer;
+const S3Adapter = require('parse-server').S3Adapter;
 const firebaseAuthAdapter = require('parse-server-firebase-auth-adapter');
 const path = require('path');
 
@@ -29,12 +30,18 @@ let apiConfig = {
     android: {
       apiKey: process.env.ANDROID_PUSH_NOTIFICATION_API_KEY
     },
-    ios: {
+    ios: [{
+      pfx: process.env.IOS_PUSH_NOTIFICATION_CERT_DEV,
+      passphrase: process.env.IOS_PUSH_NOTIFICATION_CERT_PASSWORD_DEV || '', // optional password to your p12/PFX
+      topic: process.env.IOS_BUNDLE_IDENTIFIER_DEV || '',
+      production: false,
+    },
+    {
       pfx: process.env.IOS_PUSH_NOTIFICATION_CERT,
       passphrase: process.env.IOS_PUSH_NOTIFICATION_CERT_PASSWORD || '', // optional password to your p12/PFX
       topic: process.env.IOS_BUNDLE_IDENTIFIER || '',
-      production: process.env.IOS_PUSH_NOTIFICATION_PROD === 'true' || false,
-    }
+      production: true,
+    }]
   }
 };
 
@@ -56,6 +63,17 @@ if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY && process.env.FIREBASE_DATABASE_UR
 }
 
 apiConfig.auth = auth;
+
+if (process.env.S3_BUCKET) {
+  apiConfig.filesAdapter = new S3Adapter(
+    process.env.S3_ACCESS_KEY,
+    process.env.S3_SECRET_KEY,
+    process.env.S3_BUCKET,
+    {
+      directAccess: true,
+    }
+  );
+}
 
 const api = new ParseServer(apiConfig);
 
