@@ -2519,10 +2519,10 @@ parse-server-firebase-auth-adapter@^0.0.4:
   dependencies:
     firebase-admin "^6.0.0"
 
-parse-server@latest:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/parse-server/-/parse-server-3.4.0.tgz#53e59bce625e16cb5e120bd24f444cf3b1356295"
-  integrity sha512-mgJnCtOinM+B882OVQIsoCSPPABlhB/zm6+MSn/tZM4+y6ZoIteVZkRBnATsCGvSDlfylHUc4AOhYC7wFwarHA==
+parse-server@^3.4.4:
+  version "3.4.4"
+  resolved "https://registry.yarnpkg.com/parse-server/-/parse-server-3.4.4.tgz#518cc7570c85ad753d8191d373fa7fe34afdaf82"
+  integrity sha512-XEs4jbIrWGR+NKeUr3BVQirf1lUDQf0vMFX9W2w4GV7ttzw2rQDxK6/DB4k4cxkzNQPlHlxPKt2mlchSBLfBSQ==
   dependencies:
     "@parse/fs-files-adapter" "1.0.1"
     "@parse/push-adapter" "3.0.0"
