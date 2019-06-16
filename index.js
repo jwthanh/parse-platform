@@ -71,6 +71,7 @@ if (process.env.S3_BUCKET) {
     process.env.S3_BUCKET,
     {
       directAccess: true,
+      region: process.env.S3_REGION || 'us-east-1',
     }
   );
 }
