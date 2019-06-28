@@ -30,24 +30,34 @@ let apiConfig = {
   appId: process.env.APP_ID || 'YOUR_KEY',
   masterKey: process.env.MASTER_KEY || 'YOUR_KEY',
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',
-  push: {
-    android: {
-      apiKey: process.env.ANDROID_PUSH_NOTIFICATION_API_KEY
-    },
-    ios: [{
-      pfx: process.env.IOS_PUSH_NOTIFICATION_CERT_DEV,
-      passphrase: process.env.IOS_PUSH_NOTIFICATION_CERT_PASSWORD_DEV || '', // optional password to your p12/PFX
-      topic: process.env.IOS_BUNDLE_IDENTIFIER_DEV || '',
-      production: false,
-    },
-    {
-      pfx: process.env.IOS_PUSH_NOTIFICATION_CERT,
-      passphrase: process.env.IOS_PUSH_NOTIFICATION_CERT_PASSWORD || '', // optional password to your p12/PFX
-      topic: process.env.IOS_BUNDLE_IDENTIFIER || '',
-      production: true,
-    }]
-  }
 };
+
+const push = {};
+
+if (process.env.ANDROID_PUSH_NOTIFICATION_API_KEY) {
+  push.android = {
+    apiKey: process.env.ANDROID_PUSH_NOTIFICATION_API_KEY;
+  }
+}
+
+if (process.env.IOS_PUSH_NOTIFICATION_CERT_DEV && process.env.IOS_PUSH_NOTIFICATION_CERT) {
+  push.ios = [{
+    pfx: process.env.IOS_PUSH_NOTIFICATION_CERT_DEV,
+    passphrase: process.env.IOS_PUSH_NOTIFICATION_CERT_PASSWORD_DEV || '', // optional password to your p12/PFX
+    topic: process.env.IOS_BUNDLE_IDENTIFIER_DEV || '',
+    production: false,
+  },
+  {
+    pfx: process.env.IOS_PUSH_NOTIFICATION_CERT,
+    passphrase: process.env.IOS_PUSH_NOTIFICATION_CERT_PASSWORD || '', // optional password to your p12/PFX
+    topic: process.env.IOS_BUNDLE_IDENTIFIER || '',
+    production: true,
+  }];
+}
+
+if (push.android || push.ios) {
+  apiConfig.push = push;
+}
 
 const auth = {};
 
