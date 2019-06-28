@@ -2,12 +2,16 @@
  * Parse platform server
  * @author: Thanh Vu <jwtrs512@gmail.com>
  */
+const enableFirebase = process.env.FIREBASE_SERVICE_ACCOUNT_KEY && process.env.FIREBASE_DATABASE_URL;
 
 const http = require('http');
 const express = require('express');
 const ParseServer = require('parse-server').ParseServer;
 const S3Adapter = require('parse-server').S3Adapter;
-const firebaseAuthAdapter = require('parse-server-firebase-auth-adapter');
+let firebaseAuthAdapter;
+if (enableFirebase) {
+  firebaseAuthAdapter = require('parse-server-firebase-auth-adapter');
+}
 const path = require('path');
 
 global.FirebaseAdmin = require('firebase-admin');
@@ -54,7 +58,7 @@ if (process.env.FACEBOOK_APP_ID && process.env.FB_ACCOUNTKIT_SECRET) {
   }
 }
 
-if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY && process.env.FIREBASE_DATABASE_URL) {
+if (enableFirebase) {
   FirebaseAdmin.initializeApp({
     credential: FirebaseAdmin.credential.cert(require(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)),
     databaseURL: process.env.FIREBASE_DATABASE_URL,
