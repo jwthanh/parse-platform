@@ -36,7 +36,7 @@ const push = {};
 
 if (process.env.ANDROID_PUSH_NOTIFICATION_API_KEY) {
   push.android = {
-    apiKey: process.env.ANDROID_PUSH_NOTIFICATION_API_KEY;
+    apiKey: process.env.ANDROID_PUSH_NOTIFICATION_API_KEY,
   }
 }
 
