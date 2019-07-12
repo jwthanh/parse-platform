@@ -1,11 +1,11 @@
 {
   "name": "parse-platform",
   "author": "Thanh Vu <jwtrsa512@gmail.com",
-  "version": "1.0.0",
+  "version": "1.2.3",
   "dependencies": {
     "express": "^4.17.1",
     "firebase-admin": "^8.0.0",
-    "parse-server": "^3.4.4",
+    "parse-server": "^3.6.0",
     "parse-server-firebase-auth-adapter": "^0.0.4"
   },
   "devDependencies": {}
