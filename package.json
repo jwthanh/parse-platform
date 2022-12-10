@@ -3,7 +3,7 @@
   "author": "Thanh Vu <jwtrsa512@gmail.com",
   "version": "1.2.3",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "firebase-admin": "^8.0.0",
     "parse-server": "^4.1.0",
     "parse-server-firebase-auth-adapter": "^0.0.4"
